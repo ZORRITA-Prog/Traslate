@@ -12,7 +12,7 @@ Hola he creado un hermoso traductor, nada util la verdad
 <details>
   <summary>Instalacion</summary>
 
-[TraslateKlee-V1.2](https://kevinreyes-garcia-rgb.github.io/Traslate-V1.2/)
+[TraslateKlee-V1.2](https://zorrita-prog.github.io/Traslate/)
   
 </details>
 
