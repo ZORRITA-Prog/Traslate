@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Translate Klee ✨</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Poppins:wght@400;600&display=swap');
+
+    :root {
+      --red-klee: #EB5020;
+      --dark-red: #C5725A;
+      --white: #FFF8F0;
+      --accent: #FAD08D;
+      --gold: #F7C09A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #FFF8F0 0%, #FAD08D 100%);
+      color: #333;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: var(--red-klee);
+      color: white;
+      padding: 1.5rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(235, 80, 32, 0.4);
+    }
+
+    header::before {
+      content: '💥';
+      position: absolute;
+      font-size: 4rem;
+      opacity: 0.15;
+      top: -20px;
+      left: 10%;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    header h1 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3rem;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      margin-top: 5px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 15px 35px rgba(235, 80, 32, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 3px solid var(--red-klee);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 45px rgba(235, 80, 32, 0.25);
+    }
+
+    .card h2 {
+      color: var(--red-klee);
+      margin-bottom: 1.5rem;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.8rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .card h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      margin: 8px auto;
+      border-radius: 2px;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      resize: vertical;
+      transition: all 0.3s;
+    }
+
+    textarea:focus, input:focus {
+      border-color: var(--red-klee);
+      box-shadow: 0 0 0 4px rgba(235, 80, 32, 0.2);
+      outline: none;
+    }
+
+    select, button {
+      padding: 12px 20px;
+      font-size: 1.05rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    button {
+      background: var(--red-klee);
+      color: white;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #C5725A;
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(235, 80, 32, 0.4);
+    }
+
+    .result {
+      margin-top: 1.5rem;
+      padding: 1.2rem;
+      background: #f9f9f9;
+      border-radius: 12px;
+      min-height: 80px;
+      border-left: 6px solid var(--red-klee);
+      animation: fadeIn 0.5s ease;
+      word-wrap: break-word;
+    }
+
+    .swap-btn {
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--red-klee);
+      transition: transform 0.4s;
+    }
+
+    .swap-btn:hover {
+      transform: rotate(180deg);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(30px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .spark {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: sparkAnim 1.5s forwards;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @keyframes sparkAnim {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0); opacity: 0; transform: translateY(20px); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .klee-icon {
+      display: inline-block;
+      font-size: 2.5rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Translate Klee <span class="klee-icon">💥</span></h1>
+    <p class="subtitle">¡Traduce con estilo explosivo! ✨ | Definiciones divertidas</p>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>🌍 Traductor</h2>
+      
+      <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 1rem;">
+        <select id="langFrom">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="it">Italiano</option>
+          <option value="ja">日本語</option>
+          <option value="zh">中文</option>
+        </select>
+        
+        <button class="swap-btn" onclick="swapLanguages()">🔄</button>
+        
+        <select id="langTo">
+          <option value="en">English</option>
+          <option value="es" selected>Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="it">Italiano</option>
+          <option value="ja">日本語</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+
+      <textarea id="inputText" rows="6" placeholder="Escribe aquí el texto que quieres traducir..."></textarea>
+      
+      <div style="text-align: center; margin: 1rem 0;">
+        <button onclick="translateText()">¡Traducir con Klee! 💣</button>
+      </div>
+
+      <div class="result" id="translationResult">
+        <strong>Traducción:</strong><br>
+        <span id="translatedText">La traducción aparecerá aquí...</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔍 Buscar Definición</h2>
+      
+      <input type="text" id="wordInput" placeholder="Escribe una palabra en inglés...">
+      <div style="text-align: center; margin: 1rem 0;">
+        <button onclick="searchDefinition()">Buscar Definición ✨</button>
+      </div>
+
+      <div class="result" id="definitionResult">
+        <strong>Definición:</strong><br>
+        <span id="defText">La definición aparecerá aquí... (Actualmente solo en inglés)</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Translate Klee • Inspirado en la pequeña bombardera de Mondstadt ❤️ • Hecho con explosiones de cariño por KG359
+  </footer>
+
+  <script>
+    // Usamos una API de traducción más estable (MyMemory) que no requiere Key para uso básico
+    async function translateText() {
+      const text = document.getElementById('inputText').value.trim();
+      if (!text) return alert("¡Escribe algo para traducir!");
+
+      const from = document.getElementById('langFrom').value;
+      const to = document.getElementById('langTo').value;
+      const resultSpan = document.getElementById('translatedText');
+
+      resultSpan.textContent = "Traduciendo... 💥";
+
+      try {
+        const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${from}|${to}`);
+        const data = await res.json();
+
+        if (data.responseData) {
+          resultSpan.textContent = data.responseData.translatedText;
+        } else {
+          resultSpan.textContent = "¡Oh no! Algo explotó mal. Inténtalo de nuevo.";
+        }
+      } catch (err) {
+        resultSpan.textContent = "Error de conexión. Jean me va a regañar... 😢";
+      }
+    }
+
+    function swapLanguages() {
+      const from = document.getElementById('langFrom');
+      const to = document.getElementById('langTo');
+      const temp = from.value;
+      from.value = to.value;
+      to.value = temp;
+    }
+
+    async function searchDefinition() {
+      const word = document.getElementById('wordInput').value.trim().toLowerCase();
+      if (!word) return alert("¡Escribe una palabra!");
+
+      const defText = document.getElementById('defText');
+      defText.innerHTML = "Buscando... ✨";
+
+      try {
+        const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        const data = await res.json();
+
+        if (!Array.isArray(data)) {
+          defText.innerHTML = `<strong>${word}</strong>: No encontré esa palabra en mi libro. ¡Prueba otra!`;
+          return;
+        }
+
+        let html = `<strong>${data[0].word.toUpperCase()}</strong> ${data[0].phonetic ? `[${data[0].phonetic}]` : ''}<br><br>`;
+        
+        data[0].meanings.forEach(meaning => {
+          html += `<em style="color: var(--red-klee)">${meaning.partOfSpeech}</em><br>`;
+          meaning.definitions.slice(0, 2).forEach((def, i) => {
+            html += `${i+1}. ${def.definition}<br>`;
+          });
+          html += "<br>";
+        });
+
+        defText.innerHTML = html;
+      } catch (err) {
+        defText.textContent = "Error al buscar. ¡Tal vez la palabra voló por los aires!";
+      }
+    }
+
+    // Efecto de chispas corregido para que aparezcan en la posición del ratón correctamente
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        for (let i = 0; i < 8; i++) {
+          const spark = document.createElement('div');
+          spark.className = 'spark';
+          spark.style.left = `${e.pageX + Math.random() * 40 - 20}px`;
+          spark.style.top = `${e.pageY + Math.random() * 40 - 20}px`;
+          document.body.appendChild(spark);
+          setTimeout(() => spark.remove(), 1000);
+        }
+      });
+    });
+
+    document.getElementById('wordInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') searchDefinition();
+    });
+  </script>
+</body>
+</html>
